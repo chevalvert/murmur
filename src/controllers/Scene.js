@@ -83,5 +83,6 @@ export async function next ({ autoBump = true, instant = false } = {}) {
 
   loadingNext.set(false)
   await delay(10)
+  refs.transition.goto(0)
   if (autoBump) bump()
 }
