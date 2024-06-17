@@ -1,0 +1,41 @@
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+body.has-flags::after {
+  content: '';
+
+  position: fixed;
+  z-index: 999999;
+  top: 2rem;
+  right: 2rem;
+  left: unset;
+
+  width: 1rem;
+  height: 1rem;
+
+  background: #ff528c;
+  border-radius: 100%;
+}
+
+main {
+  isolation: isolate;
+}
+
+a {
+  color: inherit;
+}
+
+* {
+  --font-v-weight: 450;
+  --font-v-italic: 0;
+  font-variation-settings:
+    "wght" var(--font-v-weight),
+    "ital" var(--font-v-italic);
+  font-variant-numeric: tabular-nums;
+  font-weight: normal;
+}

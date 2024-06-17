@@ -1,0 +1,47 @@
+.graph {
+  @include no-select;
+  position: relative;
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.8rem;
+  }
+
+  &__legend {
+    position: absolute;
+    top: var(--gutter);
+    left: var(--gutter);
+
+    padding: var(--gutter);
+
+    font-family: var(--font-family-mono);
+    color: white;
+
+    background: rgba(255 255 255 / 7%);
+    border-radius: 0.8rem;
+
+    label {
+      display: flex;
+      cursor: pointer;
+      align-items: baseline;
+      gap: 1.25ch;
+
+      &::before {
+        content: '';
+        width: calc(2 * var(--gutter));
+        height: 1ex;
+        background: var(--color);
+        border-radius: 1ex;
+      }
+    }
+
+    input {
+      display: none;
+    }
+
+    label:has(input:not(:checked)) {
+      opacity: 0.3;
+    }
+  }
+}

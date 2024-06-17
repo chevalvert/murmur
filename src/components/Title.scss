@@ -1,0 +1,31 @@
+// Fade in and out with iddle
+.title {
+  @include no-select;
+
+  // Will be set by <Title> using app.config.json
+  --title-offx: 0px;
+  --title-offy: 0px;
+  --title-font-size: 26vw;
+  --title-line-height: 0.8;
+  --title-color: white;
+  --title-v-weight: 100;
+  --title-v-italic: 0;
+
+  --font-v-weight: var(--title-v-weight, 100);
+  --font-v-italic: var(--title-v-italic, 0);
+
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+
+  font-size: var(--title-font-size);
+  line-height: var(--title-line-height);
+  color: var(--title-color);
+  text-align: center;
+
+  transform: translate(
+    calc(var(--title-offx) - 50%),
+    calc(var(--title-offy) - 50%)
+  );
+}

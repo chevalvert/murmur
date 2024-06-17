@@ -1,0 +1,68 @@
+@mixin debug ($offset: 0, $color: red) {
+  outline: 1px solid $color;
+
+  @if $offset {
+    outline-offset: $offset;
+  }
+}
+
+@mixin easing ($duration: 100ms, $property: all, $will-change: false) {
+  transition-duration: $duration;
+  transition-property: $property;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  @if $will-change {
+    will-change: $property;
+  }
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+@mixin invisible-scroll ($direction: x) {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @if $direction == x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  } @else if $direction == y {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  } @else {
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    background: transparent;
+  }
+}
+
+@keyframes loader-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@mixin loader ($size: 5rem, $thickness: 1rem, $foreground: black, $background: transparent, $speed: 1s) {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: $size;
+  height: $size;
+
+  pointer-events: none;
+
+  border: $thickness solid $background;
+  border-top: $thickness solid $foreground;
+  border-left: $thickness solid $foreground;
+  border-radius: 50%;
+  animation: loader-spin $speed linear infinite;
+}

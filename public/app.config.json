@@ -1,0 +1,96 @@
+{
+  "debug": false,
+
+  "microphone": {
+    "threshold": 1.0
+  },
+
+  "stripLed": {
+    "inside": {
+      "length": 10,
+      "color": [255, 0, 0, 0]
+    },
+    "ledCount": 500
+  },
+
+  "particles": {
+    "acceleration": 1.4,
+    "minLength": 10,
+    "color": [0, 0, 0, 127],
+    "minBumpInterval": 3000
+  },
+
+  "video": {
+    "offset": ["0vw", "0vw"],
+    "minPlaybackRate": 1,
+    "maxPlaybackRate": 3,
+    "secondsBeforeOvershoot": 0.25,
+    "width": "1920px"
+  },
+
+  "mask": {
+    "offset": ["0vw", "0vw"],
+    "blur": "0.2vw",
+    "radius": "1vw"
+  },
+
+  "hud": {
+    "padding": ["1vw", "1vw"],
+    "fontSize": "3vw"
+  },
+
+  "title": {
+    "text": "murmur\nstellar",
+    "fontSize": "26vw",
+    "vWeight": 200,
+    "vItalic": 5,
+    "color": "white",
+    "lineHeight": 0.8,
+    "offset": ["0vw", "-2vw"],
+    "fadeOut": { "delay": 1000, "duration": 2000, "easing": "linear" }
+  },
+
+  "idle": {
+    "src": "videos/idle.mp4",
+    "fadeIn": { "duration": 3000, "easing": "easeOutExpo" },
+    "fadeOut": { "duration": 2000, "easing": "linear" },
+    "after": 30000
+  },
+
+  "transition": {
+    "src": "videos/transition.mp4",
+    "duration": 5000
+  },
+
+  "sequences": [
+    {
+      "steps": 4,
+      "loopEntry": 30,
+      "src": "videos/a/%03d.mp4"
+    }
+  ],
+
+  "tint": {
+    "blur": "5vw",
+    "mixBlendMode": "multiply",
+    "colors" : [
+      ["rgb(255, 0, 0)", [255, 0, 0, 0, 1.0]],
+      ["rgb(0, 255, 0)", [0, 255, 0, 0, 1.0]],
+      ["rgb(0, 0, 255)", [0, 0, 255, 0, 1.0]]
+    ]
+  },
+
+  "sounds": {
+    "ambient": {
+      "src": "sounds/stellar-01.mp3",
+      "volume": 1.0,
+      "loop": true
+    },
+    "events": [
+      { "src": "sounds/events/stellar-01-01.mp3", "volume": 1.0 },
+      { "src": "sounds/events/stellar-01-02.mp3", "volume": 1.0 },
+      { "src": "sounds/events/stellar-01-03.mp3", "volume": 1.0 },
+      { "src": "sounds/events/stellar-01-04.mp3", "volume": 1.0 }
+    ]
+  }
+}

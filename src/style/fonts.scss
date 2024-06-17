@@ -1,0 +1,19 @@
+@font-face {
+  // wght [100, 900]
+  // ital [0, 10]
+
+  font-family: aero;
+
+  font-display: auto;
+
+  font-style: normal;
+  font-weight: normal;
+
+  font-synthesis: none;
+  ascent-override: 40%;
+
+  src:
+    url('/fonts/AtAeroVARVF.woff2') format('woff2'),
+    url('/fonts/AtAeroVARVF.woff') format('woff'),
+    url('/fonts/AtAeroVARVF.otf') format('opentype');
+}

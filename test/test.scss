@@ -1,0 +1,31 @@
+@import '/index';
+
+body[data-test=''] {
+  @include no-select;
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--gutter);
+  font-family: var(--font-family-mono);
+
+  h1 {
+    margin-bottom: 1em;
+  }
+
+  a {
+    padding-block: 2rem;
+    margin-bottom: -1px;
+    text-decoration: none;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+
+    &::before {
+      content: '→ ';
+    }
+
+    &:hover, &:focus {
+      z-index: 1;
+      color: #fffca4;
+    }
+  }
+}

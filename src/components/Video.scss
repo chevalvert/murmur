@@ -1,0 +1,16 @@
+video {
+  position: fixed;
+  z-index: 1; // Will be bumped to 9 by <Video>.raise
+  top: var(--video-offy);
+  left: var(--video-offx);
+
+  height: auto;
+  min-width: var(--video-width);
+
+  // Handle video z layering
+  &.is-raised {
+    z-index: 9;
+    &.idle { z-index: 99; }
+    &.transition { z-index: 999; }
+  }
+}

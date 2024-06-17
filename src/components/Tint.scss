@@ -1,0 +1,22 @@
+.tint {
+  // Will be set by <Tint> and controllers/Tint using app.config.json
+  --tint-color: red;
+  --tint-percent: 70%;
+  --tint-blur: 0;
+  --tint-mix-blend-mode: multiply;
+
+  position: fixed;
+  z-index: 99;
+  inset: 0;
+  top: var(--video-offy);
+  left: var(--video-offx);
+
+  width: 100vw;
+  height: calc(100vw / (16 / 9));
+
+  background: radial-gradient(white, var(--tint-color) var(--tint-percent));
+  border-radius: 100%;
+  filter: blur(var(--tint-blur));
+
+  mix-blend-mode: var(--tint-mix-blend-mode);
+}

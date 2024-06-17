@@ -1,0 +1,14 @@
+:root {
+  --color-background: #111;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter);
+  padding: var(--gutter);
+}
+
+.graph {
+  flex: 1;
+}

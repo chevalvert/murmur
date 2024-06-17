@@ -1,0 +1,59 @@
+.hud {
+  @include no-select;
+
+  --hud-padding-x: 0;
+  --hud-padding-y: 0;
+  --hud-font-size: 20px;
+
+  position: fixed;
+  z-index: 99999;
+  inset:
+    var(--hud-padding-y)
+    var(--hud-padding-x);
+  font-size: var(--hud-font-size);
+  pointer-events: none;
+
+  &, fieldset {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1em;
+  }
+
+  div {
+    position: relative;
+    font-size: 1em;
+    line-height: 1.0;
+    letter-spacing: 0.05em;
+    color: white;
+
+    .math {
+      font-size: 0.6em;
+      vertical-align: 0.2em;
+    }
+
+    sup {
+      margin-left: 0.2em;
+      font-size: 0.5em;
+      line-height: 0;
+      vertical-align: 1em;
+    }
+
+    &[data-symbol] {
+      padding-left: 1em;
+    }
+
+    &[data-symbol]::after {
+      content: attr(data-symbol);
+      position: absolute;
+      left: 0;
+    }
+
+    &[data-label]::before {
+      display: block;
+      content: attr(data-label);
+      font-size: 40%;
+      line-height: 2.3;
+    }
+  }
+}

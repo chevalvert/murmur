@@ -1,0 +1,8 @@
+body {
+  display: grid;
+  place-items: center;
+}
+
+body::after {
+  content: 'stripled should chase RGBW';
+}

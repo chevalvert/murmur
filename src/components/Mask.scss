@@ -1,0 +1,19 @@
+.mask {
+  // Will be set by <Mask> using app.config.json
+  --mask-x: 0px;
+  --mask-y: 0px;
+  --mask-radius: 0px;
+  --mask-blur: 0px;
+
+  position: fixed;
+  z-index: 9999;
+  top: calc(28vw + var(--mask-y) - var(--mask-radius));
+  left: calc(50vw + var(--mask-x) - var(--mask-radius));
+
+  width: calc(var(--mask-radius) * 2);
+  height: calc(var(--mask-radius) * 2);
+
+  background: black;
+  border-radius: 100%;
+  filter: blur(var(--mask-blur));
+}
