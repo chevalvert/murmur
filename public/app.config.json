@@ -58,7 +58,8 @@
   },
 
   "transition": {
-    "src": "videos/transition.mp4",
+    "src": "videos/transitions.mp4",
+    "steps": 2,
     "duration": 5000
   },
 

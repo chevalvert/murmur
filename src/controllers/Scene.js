@@ -1,3 +1,4 @@
+import { randomInt } from 'missing-math'
 import { raf } from '@internet/raf'
 import { writable } from '@tooooools/ui/state'
 
@@ -79,10 +80,13 @@ export async function next ({ autoBump = true, instant = false } = {}) {
   refs.sequence = new Sequence(sequencePicker.next())
   await refs.sequence.load()
 
-  if (!instant) await delay(Configuration.transition.duration)
+  if (!instant) {
+    await delay(Configuration.transition.duration)
+    refs.transition.pause()
+  }
 
   loadingNext.set(false)
   await delay(10)
-  refs.transition.goto(0)
+  refs.transition.goto(Configuration.transition.duration * randomInt(0, Configuration.transition.steps + 1))
   if (autoBump) bump()
 }
