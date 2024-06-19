@@ -1,4 +1,3 @@
-import anime from 'animejs'
 import { lerp } from 'missing-math'
 import { writable } from '@tooooools/ui/state'
 
@@ -36,20 +35,9 @@ export function disable () {
   if (!enabled.get()) return
   enabled.set(false)
   color.set(null)
-  anime.remove()
 }
 
-export async function bump () {
-  anime.remove()
-  await anime({
-    targets: refs.component.base,
-    keyframes: [
-      { scaleX: 0.9, scaleY: 0.9, duration: 600 },
-      { scaleX: 1, scaleY: 1, duration: 300 }
-    ],
-    easing: 'easeOutExpo'
-  }).finished
-}
+export async function bump () {}
 
 export function apply (rgbw = [], t = 1) {
   const [, led] = color.get() ?? []
