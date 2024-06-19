@@ -36,7 +36,7 @@ export async function render () {
 
   // Play transition while loading the next sequence
   loadingNext.subscribe(loadingNext => {
-    if (loadingNext) refs.transition.play()
+    if (loadingNext) refs.transition.play(refs.transition.currentFrame)
     else refs.transition.pause()
   })
 }
@@ -87,6 +87,7 @@ export async function next ({ autoBump = true, instant = false } = {}) {
 
   loadingNext.set(false)
   await delay(10)
-  refs.transition.goto(Configuration.transition.duration * randomInt(0, Configuration.transition.steps + 1))
+  const next = (Configuration.transition.duration * randomInt(0, Configuration.transition.steps) / 1000) * refs.transition.frameRate
+  refs.transition.goto(next)
   if (autoBump) bump()
 }
