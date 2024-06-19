@@ -29,7 +29,7 @@ export default class ParticleEngine {
       curr.applyForce(this.field[curr.intpos])
       curr.update(dt)
 
-      this.odometer.update(v => v + (curr.dintpos / 60)) // In real-life meters
+      this.odometer.update(v => isFinite(curr.dintpos) ? v + (curr.dintpos / 60) : v) // In real-life meters
 
       // Cheap way to emit an event on particle exiting
       if (curr.intpos > this.size && this.lastTouch.current < curr.timestamp) {
