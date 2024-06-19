@@ -1,6 +1,7 @@
 import '/index.scss'
 
 import { raf } from '@internet/raf'
+import { clamp } from 'missing-math'
 import Microphone from '/abstractions/Microphone'
 import Particle from '/abstractions/Particle'
 import ParticleEngine from '/abstractions/ParticleEngine'
@@ -116,7 +117,7 @@ async function setup () {
       for (let i = 0; i < particle.trail; i++) {
         let o = (1 - (i / particle.trail) ** 2)
         o *= (Math.min(particle.lifespan, 100) / 100) ** 0.5
-        const t = (particle.intpos / engine.size) ** 3
+        const t = clamp((particle.intpos / engine.size) ** 3, 0, 1)
         strip.setPixel(particle.intpos - i * d, [...Tint.apply(particle.color, t), o])
       }
     }
