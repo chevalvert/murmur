@@ -1,46 +1,57 @@
-# tooooools/boilerplate [<img src="https://github.com/tooooools.png?size=100" size="100" align="right">](http://github.com/tooooools/)
-> Vite boilerplate with JSX, SCSS, `eslint`, `stylelint` and a test environment.
+# Murmur [<img src="https://github.com/chevalvert.png?size=100" align="right">](http://chevalvert.fr/)
 
 <br>
 
 ## Installation
 
-### Using as a Github template
-[Use this template](https://github.com/tooooools/boilerplate/generate).
+### Requirements
 
-### By cloning and unboiling manually
-```console
-$ git clone https://github.com/tooooools/boilerplate my-app
-$ cd my-app
-$ npx unboil
-$ yarn install
+- Raspberry Pi 4 B
+- Raspberry Pi OS Lite (64-bit)
+- Mac mini with ethernet port
+
+### Wiring
+
+// TODO
+
+### Static IP setup
+
+<b>IMPORTANT:</b> macos should have _Internet Sharing_ enabled.
+
+Then in macos network ethernet settings, set `IPv4 Configured` to `Using DHCP with Manual Adress`, with the IP address to `<ROUTER_IP>`.
+
+```
+$ sudo apt-get install dhcpcd5
+$ sudo service dhcpcd start
+$ sudo systemctl enable dhcpcd
+$ sudo nano /etc/dhcpcd.conf
 ```
 
-## Usage
+###### `/etc/dhcpcd.conf`
+```
+interface <INTERFACE>
+static_routers=<ROUTER IP>
+static domain_name_servers=<DNS IP>
+static ip_address=<STATIC IP ADDRESS YOU WANT>/24
+```
 
-```bash
-# Development
+### Software
+
+See releases for the app binary, or clone this repo and compile the package (see Development below).
+
+## Development
+
+```console
+$ git clone https://github.com/chevalvert/murmur
+$ cd murmur
+$ yarn install
 $ yarn start
-$ yarn test
-
-# Staging
-$ yarn build
-$ yarn preview
-$ yarn deploy:staging
-
-# Production
 $ yarn version
 ```
 
-## Browser support
-
+```console
+$ yarn pkg
 ```
-Chrome >=87
-Firefox >=78
-Safari >=14
-Edge >=88
-```
-<sup>From [Vite Browser Compatibility](https://vitejs.dev/guide/build.html#browser-compatibility)</sup>
 
 ## Credits
 
