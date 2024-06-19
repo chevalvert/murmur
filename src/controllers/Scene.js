@@ -27,7 +27,6 @@ export async function render () {
   refs.transition = await Video.render({
     class: 'transition',
     src: Configuration.transition.src,
-    loop: true,
     preload: true
   })
 
