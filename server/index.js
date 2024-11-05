@@ -23,6 +23,7 @@ const websocket = require('./websocket')
 
 // Instanciate Rasbperry PI and websocket
 const rpi = raspberry(process.env.RPI_ADDRESS, process.env.RPI_PORT)
+logger({ color: 'blue', prefix: '[RASPBERRY]' })(process.env.RPI_ADDRESS)
 websocket(process.env.WS_PORT, message => {
   try {
     const pixels = JSON.parse(message)
@@ -50,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
 
   // Serve static files
   app.use(express.static(path.join(__dirname, '..', 'dist')))
-  logger({ color: 'blue', prefix: '[EXPRESS]'})(`Serving public from ${PUBLIC}`)
+  logger({ color: 'blue', prefix: '[EXPRESS]' })(`Serving public from ${PUBLIC}`)
   app.use(express.static(PUBLIC))
 
   // Log errors
