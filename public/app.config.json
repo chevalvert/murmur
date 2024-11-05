@@ -10,7 +10,7 @@
       "length": 10,
       "color": [255, 0, 0, 0]
     },
-    "ledCount": 500
+    "ledCount": 300
   },
 
   "particles": {
@@ -59,7 +59,7 @@
 
   "transition": {
     "src": "videos/transitions.mp4",
-    "steps": 2,
+    "steps": 4,
     "duration": 5000
   },
 
