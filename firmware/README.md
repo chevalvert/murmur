@@ -9,6 +9,7 @@
 
 ```shell
 ssh murmur@murmur.local
+# mdp: jaures7519
 ```
 
 ```shell
