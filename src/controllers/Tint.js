@@ -7,8 +7,8 @@ import Configuration from '/controllers/Configuration'
 import RandomPicker from '/utils/random-picker'
 
 const enabled = writable(true)
-const color = writable(null)
 let tintPicker
+export const color = writable(null)
 
 export const refs = {
   component: null
@@ -37,10 +37,8 @@ export function disable () {
   color.set(null)
 }
 
-export async function bump () {}
-
 export function apply (rgbw = [], t = 1) {
-  const [, led] = color.get() ?? []
+  const { led } = color.get() ?? []
   return led
     ? rgbw.map((v, i) => lerp(v, led[i], (led[4] ?? 1) * t))
     : rgbw
@@ -48,8 +46,8 @@ export function apply (rgbw = [], t = 1) {
 
 export function next () {
   color.update(() => {
-    const [css, led] = (tintPicker?.next() ?? [])
-    refs.component.state.color.set(css)
-    return [css, led]
+    const { screen, led, dust } = (tintPicker?.next() ?? [])
+    refs.component.state.color.set(screen)
+    return { screen, led, dust }
   })
 }

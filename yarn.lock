@@ -400,12 +400,11 @@
     "@serialport/bindings-interface" "1.2.2"
     debug "4.3.4"
 
-"@tooooools/ui@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@tooooools/ui/-/ui-1.2.1.tgz#de78818881a62501a56001bba7fc12d05a8b3823"
-  integrity sha512-hmx441y+FY8XL9YLETVNT0SV/iCroP77V6XWLmdUHTVz8M+b+kLNPsUY0Frcl3xXz/Q211FaW3lyKfBvKsqjFw==
+"@tooooools/ui@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@tooooools/ui/-/ui-1.5.0.tgz#4c37614b785f8e0b37241b7f4415c188490775ed"
+  integrity sha512-aJH4J2yqWlnVlUOPN0uk82IIw/7GFnOY64PaYieVCpHDQOEK/9+uQNk390xsKmzmpg/FVsJ+pWNP9+ZvrBREow==
   dependencies:
-    classnames "^2.3.2"
     debounce "^1.2.1"
 
 "@types/json5@^0.0.29":
@@ -745,11 +744,6 @@ chownr@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
-
-classnames@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
-  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
 cliui@^7.0.2:
   version "7.0.4"

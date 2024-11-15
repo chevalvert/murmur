@@ -22,7 +22,7 @@ export const refs = {
 
 export async function render () {
   await Configuration.load()
-  sequencePicker = new RandomPicker(Configuration.sequences)
+  sequencePicker = new RandomPicker(Configuration.sequences.filter(({ __disabled }) => !__disabled))
 
   refs.transition = await Video.render({
     class: 'transition',

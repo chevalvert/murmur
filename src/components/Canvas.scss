@@ -1,0 +1,9 @@
+.canvas {
+  position: fixed;
+  z-index: 9999;
+  top: var(--video-offy);
+  left: var(--video-offx);
+
+  width: 100%;
+  height: auto;
+}

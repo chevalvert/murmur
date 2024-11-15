@@ -12,9 +12,18 @@ export default async () => {
 
   await sequence.load()
   raf.add(sequence.update)
+  sequence.bump()
 
   window.addEventListener('click', e => {
     if (sequence.done) return console.log('sequence done')
-    sequence.bump()
+
+    const delay = 3000
+    console.log(`Next bump in ${delay}ms`)
+    sequence.prepareNextBump(delay / 1000, { secondsBeforeOvershoot: 0.25 })
+
+    window.setTimeout(() => {
+      console.log(Date.now(), 'bump')
+      sequence.bump()
+    }, delay)
   })
 }

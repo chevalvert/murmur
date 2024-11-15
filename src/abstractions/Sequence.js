@@ -17,9 +17,11 @@ export default class Sequence {
   constructor ({
     steps = 1,
     loopEntry = 30,
-    src = ''
+    src = '',
+    data = {}
   } = {}) {
     this.loopEntry = loopEntry
+    this.data = data
 
     this.refs.videos = range(0, steps)
       // Rendering videos in reverse to set correct implicit z-index
@@ -50,10 +52,12 @@ export default class Sequence {
   }
 
   lastBump = -1
+  willBump = false
 
   bump () {
     this.lastBump = Date.now()
     this.target = this.refs.videos[this.currentIndex + 1]
+    this.willBump = false
   }
 
   prepareNextBump (eta, {
@@ -62,16 +66,19 @@ export default class Sequence {
     secondsBeforeOvershoot = 0
   } = {}) {
     if (!this.current) return
+    this.willBump = true
 
     const { currentTime, duration } = this.current
     const timeLeft = Math.max(0, duration - currentTime - secondsBeforeOvershoot)
-
     const factor = timeLeft / eta
     this.current.base.playbackRate = clamp(factor, minPlaybackRate, maxPlaybackRate)
 
     // Send back an adjustment factor if playbackRate cannot be set perfectly,
     // so that we can factor the particle velocity
-    return this.current.base.playbackRate / factor
+    return {
+      feedback: this.current.base.playbackRate / factor,
+      timeLeft: timeLeft / this.current.base.playbackRate
+    }
   }
 
   speed (factor, animation = {}) {

@@ -7,7 +7,7 @@ export default class ParticleEngine {
     this.size = size
 
     this.particles = []
-    this.lastTouch = writable(-1)
+    this.lastTouch = writable({ timestamp: -1 })
     this.odometer = writable(0)
     this.field = new Array(size).fill(0)
   }
@@ -22,34 +22,30 @@ export default class ParticleEngine {
 
     this.particles.sort((a, b) => b.position - a.position)
 
-    for (let index = 0; index < this.particles.length; index++) {
-      const curr = this.particles[index]
-
-      // Update current particle
-      curr.applyForce(this.field[curr.intpos])
-      curr.update(dt)
-
-      this.odometer.update(v => isFinite(curr.dintpos) ? v + (curr.dintpos / 60) : v) // In real-life meters
+    for (const particle of this.particles) {
+      // Update
+      particle.update(dt)
+      this.odometer.update(v => isFinite(particle.dv) ? v + (particle.dv / 60) : v) // In real-life meters
 
       // Cheap way to emit an event on particle exiting
-      if (curr.intpos > this.size && this.lastTouch.current < curr.timestamp) {
-        this.lastTouch.set(curr.timestamp)
+      if (particle.v > this.size && this.lastTouch.current?.timestamp < particle.timestamp) {
+        this.lastTouch.set(particle)
       }
 
       // Too slow or not moving
-      if (Math.abs(curr.velocity) <= 1e-3) {
-        garbage.push(curr)
+      if (Math.abs(particle.velocity.magSq) <= 1e-3) {
+        garbage.push(particle)
       }
 
       // OOB
-      if ((curr.velocity > 0 && (curr.intpos < 0 || curr.intpos - curr.trail > this.size)) ||
-        (curr.velocity < 0 && (curr.intpos + curr.trail < 0 || curr.intpos > this.size))) {
-        garbage.push(curr)
+      if ((particle.velocity.magSq > 0 && (particle.v < 0 || particle.v - particle.trailLength > this.size)) ||
+        (particle.velocity < 0 && (particle.v + particle.trailLength < 0 || particle.v > this.size))) {
+        garbage.push(particle)
       }
 
       // End-of-life
-      if (curr.lifespan <= 0) {
-        garbage.push(curr)
+      if (particle.lifespan <= 0) {
+        garbage.push(particle)
       }
     }
 

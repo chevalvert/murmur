@@ -4,7 +4,7 @@ import hotkey from 'Hotkeys-js'
 import { raf } from '@internet/raf'
 
 import ParticleEngine from '/abstractions/ParticleEngine'
-import Particle from '/abstractions/Particle'
+import { Particle1 } from '/abstractions/Particle'
 import StripLed from '/abstractions/StripLed'
 
 window.engine = new ParticleEngine({
@@ -41,14 +41,15 @@ export default async () => {
   let currentParticle
 
   window.addEventListener('keydown', () => {
-    window.engine.add(new Particle({
+    window.engine.add(new Particle1({
       acceleration: 5,
-      trail: 5
+      trailLength: 5
     }))
   })
+
   window.addEventListener('mousedown', () => {
     const dt = Math.random() > 0.5 ? -1 : 1
-    currentParticle = window.engine.add(new Particle({
+    currentParticle = window.engine.add(new Particle1({
       position: dt < 0 ? window.engine.size : 0,
       acceleration: dt
     }))
@@ -61,9 +62,9 @@ export default async () => {
 
       // Increase current trail
       if (currentParticle) {
-        currentParticle.trail = currentParticle.velocity < 1
-          ? window.engine.size - currentParticle.intpos
-          : currentParticle.intpos
+        currentParticle.trailLength = currentParticle.velocity.magSq < 1
+          ? window.engine.size - currentParticle.v
+          : currentParticle.v
       }
     }
     render()
@@ -98,18 +99,17 @@ export default async () => {
     }
 
     for (const particle of window.engine.particles) {
-      const y = particle.intpos
-      const d = Math.sign(particle.velocity)
+      const d = Math.sign(particle.velocity.x)
       // Render trail
-      for (let i = 0; i < particle.trail; i++) {
-        const o = (1 - (i / particle.trail) ** 2)
-        pixel(y - i * d, [0, 0, 0, 255, o])
+      for (let i = 0; i < particle.trailLength; i++) {
+        const o = (1 - (i / particle.trailLength) ** 2)
+        pixel(particle.v - i * d, [0, 0, 0, 255, o])
       }
 
       if (window.debug) {
         // Render head
         context.fillStyle = 'yellow'
-        context.fillRect(cx - 4, y, 9, 1)
+        context.fillRect(cx - 4, particle.v, 9, 1)
       }
     }
 

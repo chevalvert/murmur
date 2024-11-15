@@ -16,8 +16,8 @@
   "particles": {
     "acceleration": 1.4,
     "minLength": 10,
-    "color": [0, 0, 0, 127],
-    "minBumpInterval": 3000
+    "maxLength": 200,
+    "streamThreshold": 180
   },
 
   "video": {
@@ -63,21 +63,53 @@
     "duration": 5000
   },
 
-  "sequences": [
-    {
-      "steps": 4,
-      "loopEntry": 30,
-      "src": "videos/a/%03d.mp4"
+  "dust": {
+    "width": 1920,
+    "height": 1080,
+    "spread": 30,
+    "thrust": [15, 25],
+    "lifespan": 1000,
+    "diffractionAmount": 5,
+    "diffractionRadius": 200,
+    "minThickness": 1,
+    "maxThickness": 20
+  },
+
+  "stream": {
+    "quantity": 100,
+    "dust": {
+      "spread": 360,
+      "diffractionRadius": [100, 500],
+      "diffractionAmount": 2,
+      "trailLength": [5, 10]
     }
+  },
+
+  "sequences": [
+    { "src": "videos/a/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/b/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/c/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/d/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/e/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/f/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/g/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/h/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/i/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/k/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/l/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/m/%03d.mp4", "steps": 4, "loopEntry": 30 },
+    { "src": "videos/n/%03d.mp4", "steps": 4, "loopEntry": 30 }
   ],
 
   "tint": {
     "blur": "5vw",
     "mixBlendMode": "multiply",
     "colors" : [
-      ["rgb(255, 0, 0)", [255, 0, 0, 0, 1.0]],
-      ["rgb(0, 255, 0)", [0, 255, 0, 0, 1.0]],
-      ["rgb(0, 0, 255)", [0, 0, 255, 0, 1.0]]
+      { "screen": "rgba(0, 0, 0, 0)", "led": [0, 0, 0, 0, 0], "dust": [255, 255, 255] },
+      { "screen": "rgb(255, 0, 0)", "led": [255, 0, 0, 0, 1.0], "dust": [255, 0, 0] },
+      { "screen": "rgb(0, 255, 0)", "led": [0, 255, 0, 0, 1.0], "dust": [0, 255, 0] },
+      { "screen": "rgb(255, 255, 0)", "led": [255, 255, 0, 0, 1.0], "dust": [255, 255, 0] },
+      { "screen": "rgb(0, 0, 255)", "led": [0, 0, 255, 0, 1.0], "dust": [0, 0, 255] }
     ]
   },
 
@@ -92,6 +124,9 @@
       { "src": "sounds/events/stellar-01-02.mp3", "volume": 1.0 },
       { "src": "sounds/events/stellar-01-03.mp3", "volume": 1.0 },
       { "src": "sounds/events/stellar-01-04.mp3", "volume": 1.0 }
+    ],
+    "stream": [
+      { "src": "sounds/phew.mp3", "volume": 1.0 }
     ]
   }
 }

@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@internet/raf": "^0.2.1",
-    "@tooooools/ui": "^1.2.1",
+    "@tooooools/ui": "^1.5.0",
     "animejs": "^3.2.2",
     "chalk": "4.x",
     "debounce": "^2.0.0",

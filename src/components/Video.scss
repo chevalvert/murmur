@@ -10,7 +10,8 @@ video {
   // Handle video z layering
   &.is-raised {
     z-index: 9;
-    &.idle { z-index: 99; }
     &.transition { z-index: 999; }
   }
+
+  &.idle { z-index: 99; }
 }

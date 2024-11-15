@@ -39,3 +39,8 @@ a {
   font-variant-numeric: tabular-nums;
   font-weight: normal;
 }
+
+.dust {
+  // Always above transition
+  z-index: 9999;
+}

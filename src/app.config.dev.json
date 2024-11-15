@@ -2,5 +2,11 @@
   "debug": true,
   "video": {
     "width": "100vw"
+  },
+
+  "sounds": {
+    "ambient": {
+      "volume": 0
+    }
   }
 }
