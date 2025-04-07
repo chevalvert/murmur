@@ -12,7 +12,7 @@
 
 ### Wiring
 
-// TODO
+See [`firmware/README.md`](firmware/README.md).
 
 ### Static IP setup
 

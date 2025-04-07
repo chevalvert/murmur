@@ -2,8 +2,13 @@
 
 ## Requirements
 
-- Raspberry Pi 4 B
-- Raspberry Pi OS Lite (64-bit)
+- Raspberry Pi 4B w/ `Raspberry Pi OS Lite (64-bit)`
+- 74AHCT125N logic level shifter
+- SK6812 RGBW stripled
+
+## Wiring
+
+![schematics](schematics.png)
 
 ## Setup
 
